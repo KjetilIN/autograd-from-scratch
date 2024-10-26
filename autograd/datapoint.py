@@ -11,3 +11,11 @@ class DataPoint:
             str: the representing string for the class instance
         """
         return f"DataPoint(data = {self.data})"
+
+    def __mul__(self, other):
+        """Allows multiplication operation for two DataPoints"""
+        return DataPoint(self.data * other.data)
+    
+    def __add__(self, other):
+        """Allows for addition operation for two DataPoints"""
+        return DataPoint(self.data + other.data)
