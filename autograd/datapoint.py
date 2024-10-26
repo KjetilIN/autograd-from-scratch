@@ -24,7 +24,7 @@ class DataPoint:
     def __mul__(self, other):
         """Allows multiplication operation for two DataPoints"""
         # Create the new list of children operation 
-        new_children = set(self, other)
+        new_children = set((self, other))
         
         # Operation was multiplication
         op = '*'
@@ -35,7 +35,7 @@ class DataPoint:
     def __add__(self, other):
         """Allows for addition operation for two DataPoints"""
         # Create the new list of children operation 
-        new_children = set(self, other)
+        new_children = set((self, other))
 
         # Operation was addition
         op = '*'
