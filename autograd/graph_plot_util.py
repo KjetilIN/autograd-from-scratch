@@ -22,7 +22,7 @@ def graph_datapoint(root):
     for n in nodes:
         uid = str(id(n))
 
-        dot.node(name=uid, label="{ data %.4f }" % (n.data,), shape="record")
+        dot.node(name=uid, label="{ %s | data %.4f }" % (n._label, n.data,), shape="record")
         if n._op:
             dot.node(name=uid+n._op, label=n._op)
             dot.edge(uid+n._op, uid)

@@ -4,6 +4,34 @@ A minimal automatic differentiation engine built from scratch to understand neur
 
 # Example Usage
 
+Building an expression:
+
+```python
+from autograd import DataPoint 
+
+a = DataPoint(data=2, _label='a')
+b = DataPoint(data=3, _label='b')
+c = DataPoint(data=3, _label='c')
+
+e = a*b
+e._label='e'
+
+d = e + c
+d._label='d'
+
+f = DataPoint(data=-2, _label='f')
+L = d * f
+L._label='L'
+
+```
+
+Resulting expression: 
+
+![image](./img/expression.svg)
+
+
+We want to calculate the derivate with respect to a term. We use the `DataPoint` data structure to build a three-like structure for computing gradients with respect to the last term. 
+
 
 # Quick start
 
