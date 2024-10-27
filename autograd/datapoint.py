@@ -3,7 +3,7 @@ class DataPoint:
        Builds a three of operations to be used for autograd
     """
 
-    def __init__(self, data, _children=(), _op=''):
+    def __init__(self, data, _children=(), _op='', _label=''):
         """Initialize the DataPoint with given children"""
         self.data = data
 
@@ -12,6 +12,10 @@ class DataPoint:
 
         # Keep track of the operation done at the current operation
         self._op = _op
+
+        # Set a label for the node
+        # Useful for plotting an expression
+        self._label = _label
 
     def __repr__(self) -> str:
         """Returns a string representation of the DataPoint class
@@ -23,7 +27,8 @@ class DataPoint:
 
     def __mul__(self, other):
         """Allows multiplication operation for two DataPoints"""
-        # Create the new list of children operation 
+
+        # Create the new list of children 
         new_children = set((self, other))
         
         # Operation was multiplication
@@ -34,11 +39,12 @@ class DataPoint:
     
     def __add__(self, other):
         """Allows for addition operation for two DataPoints"""
-        # Create the new list of children operation 
+        
+        # Create the new list of children 
         new_children = set((self, other))
 
         # Operation was addition
-        op = '*'
+        op = '+'
 
         # Return the DataPoint 
         return DataPoint(self.data + other.data, _children=new_children, _op=op)
